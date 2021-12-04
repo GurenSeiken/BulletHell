@@ -5,5 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Intento : MonoBehaviour
 {
-Debug.Log("funciona");
+    private void Awake()
+    {
+        Debug.Log("funciona");
+    }
 }
