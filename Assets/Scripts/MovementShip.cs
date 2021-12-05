@@ -6,15 +6,20 @@ using UnityEngine.InputSystem;
 public class MovementShip : MonoBehaviour
 {
 
-    [SerializeField]private PlayerInput playerInput;
+    [SerializeField] private PlayerInput playerInput;
+    public GameObject Bocabala;
     private Rigidbody rb;
     private Vector3 inputVector;
     public float speed;
 
-    private void OnAttack(InputValue valor) {
-        Debug.Log("funciona el ataque");
+    private void OnAttack(InputValue valor)
+    {
+        //Debug.Log("funciona el ataque");
+        GameObject Bala = BocaBala.Instance.Disparar();
+        Bala.transform.position = Bocabala.transform.position;
     }
-    private void OnMovimiento(InputValue valor) {
+    private void OnMovimiento(InputValue valor)
+    {
         Vector2 inputMov = valor.Get<Vector2>();
         inputVector = new Vector3(inputMov.x, 0, inputMov.y);
 
@@ -35,9 +40,15 @@ public class MovementShip : MonoBehaviour
         moveChar(inputVector);
     }
 
-    void moveChar(Vector3 direcction) {
-        //agregar velocidad en el rigit body
+    void moveChar(Vector3 direcction)
+    {
+        //agregar velocidad en el rigid body
         //rb.AddForce(inputVector * speed * Time.deltaTime);
-        rb.velocity = inputVector*speed*Time.deltaTime;
+        rb.velocity = inputVector * speed * Time.deltaTime;
+    }
+
+    void Attack()
+    {
+
     }
 }
