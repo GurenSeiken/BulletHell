@@ -11,12 +11,14 @@ public class MovementShip : MonoBehaviour
     private Rigidbody rb;
     private Vector3 inputVector;
     public float speed;
+    public AudioSource Blaster;
 
     private void OnAttack(InputValue valor)
     {
-        //Debug.Log("funciona el ataque");
         GameObject Bala = BocaBala.Instance.Disparar();
         Bala.transform.position = Bocabala.transform.position;
+        Blaster.Play();
+        
     }
     private void OnMovimiento(InputValue valor)
     {
@@ -42,8 +44,6 @@ public class MovementShip : MonoBehaviour
 
     void moveChar(Vector3 direcction)
     {
-        //agregar velocidad en el rigid body
-        //rb.AddForce(inputVector * speed * Time.deltaTime);
         rb.velocity = inputVector * speed * Time.deltaTime;
     }
 
