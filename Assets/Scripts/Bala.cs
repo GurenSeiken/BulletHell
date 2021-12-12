@@ -16,5 +16,8 @@ public class Bala : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        if (collision.transform.tag == "EnemigoChiveado") {
+            gameObject.SetActive(false);
+        }
     }
 }
