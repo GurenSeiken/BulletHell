@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 9105570275712234652}
   - component: {fileID: 8291371388912622585}
   - component: {fileID: 1779030694352173387}
-  - component: {fileID: 3189072309784686665}
   - component: {fileID: 171052850220186615}
+  - component: {fileID: 1637299877596691396}
+  - component: {fileID: 2325528527406223573}
   m_Layer: 0
   m_Name: Cubo
   m_TagString: EnemigoChiveado
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7521691284982731799}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.05, y: 0.232, z: 1.569}
-  m_LocalScale: {x: 3.9858124, y: 3.278059, z: 3.6847224}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,20 +101,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3189072309784686665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521691284982731799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a9d3864eb293a40967b7f6c18108b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Velocidadcubo: 5
-  Rb: {fileID: 1779030694352173387}
 --- !u!65 &171052850220186615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,3 +114,43 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1637299877596691396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521691284982731799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c978603daed738959678e32fc79f0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 50
+  lowHealthThreshold: 20
+  healthRestoreRate: 1
+  chasingRange: 100
+  shootingRange: 5
+  playerTransform: {fileID: 2420436976975764663, guid: fc5890e8549bd884ea9dd4a43e2209e3, type: 3}
+--- !u!195 &2325528527406223573
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521691284982731799}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.50000006
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
