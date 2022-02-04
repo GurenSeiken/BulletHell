@@ -7,6 +7,7 @@ public class RandomEnemies : MonoBehaviour
     [SerializeField] static int NumOfSpawns;
     [SerializeField] GameObject[] Posiciones=new GameObject[NumOfSpawns];
     [SerializeField] private GameObject player;
+    public GameObject path;
     Vector3[] LocalizacionPosiciones=new Vector3[NumOfSpawns];
     public GameObject Enemie;
     float time, TimeDelay;
@@ -48,25 +49,25 @@ public class RandomEnemies : MonoBehaviour
     }
 
     void SpawnOfEnemies(int Num) {
-
+        GameObject Enemiee = Instantiate(Enemie) as GameObject;
         if (Num==1)
         {
-            GameObject Enemiee = Instantiate(Enemie) as GameObject;
+            
             Enemiee.transform.position = Posiciones[0].transform.position;
-            Enemiee.GetComponent<EnemyAI>().playerTransform = player.transform;
+            Enemiee.GetComponent<EnemyAI>().playerTransform = path.transform;
           
         }
-        if (Num==2)
+        else if (Num==2)
         {
-            GameObject Enemiee = Instantiate(Enemie) as GameObject;
+            
             Enemiee.transform.position = Posiciones[1].transform.position;
-            Enemiee.GetComponent<EnemyAI>().playerTransform = player.transform;
+            Enemiee.GetComponent<EnemyAI>().playerTransform = path.transform;
         }
-        if (Num==3)
+        else
         {
-            GameObject Enemiee = Instantiate(Enemie) as GameObject;
+            
             Enemiee.transform.position = Posiciones[2].transform.position;
-            Enemiee.GetComponent<EnemyAI>().playerTransform = player.transform;
+            Enemiee.GetComponent<EnemyAI>().playerTransform = path.transform;
         }
     
     }
