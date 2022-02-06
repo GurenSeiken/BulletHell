@@ -54,7 +54,6 @@ public class EnemyAI : MonoBehaviour
         }
         if (playerTransform.position.z >= transform.position.z)
         {
-            Debug.Log("Hey");
             Destroy(gameObject);
         }
         currentHealth += Time.deltaTime * healthRestoreRate;
