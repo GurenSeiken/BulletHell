@@ -52,6 +52,11 @@ public class EnemyAI : MonoBehaviour
         if(topNode.nodeState == NodeState.FAILURE){
             SetColor(Color.red);
         }
+        if (playerTransform.position.z >= transform.position.z)
+        {
+            Debug.Log("Hey");
+            Destroy(gameObject);
+        }
         currentHealth += Time.deltaTime * healthRestoreRate;
     }
 
