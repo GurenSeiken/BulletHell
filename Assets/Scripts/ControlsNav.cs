@@ -33,14 +33,6 @@ public class @ControlsNav : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""82fefc80-fd48-4cc0-8938-3bde1c98a725"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -109,17 +101,6 @@ public class @ControlsNav : IInputActionCollection, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e0485825-c777-413d-bf1b-cb2ec806a16d"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -130,7 +111,6 @@ public class @ControlsNav : IInputActionCollection, IDisposable
         m_Nave = asset.FindActionMap("Nave", throwIfNotFound: true);
         m_Nave_Movimiento = m_Nave.FindAction("Movimiento", throwIfNotFound: true);
         m_Nave_Attack = m_Nave.FindAction("Attack", throwIfNotFound: true);
-        m_Nave_Pause = m_Nave.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -182,14 +162,12 @@ public class @ControlsNav : IInputActionCollection, IDisposable
     private INaveActions m_NaveActionsCallbackInterface;
     private readonly InputAction m_Nave_Movimiento;
     private readonly InputAction m_Nave_Attack;
-    private readonly InputAction m_Nave_Pause;
     public struct NaveActions
     {
         private @ControlsNav m_Wrapper;
         public NaveActions(@ControlsNav wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movimiento => m_Wrapper.m_Nave_Movimiento;
         public InputAction @Attack => m_Wrapper.m_Nave_Attack;
-        public InputAction @Pause => m_Wrapper.m_Nave_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Nave; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -205,9 +183,6 @@ public class @ControlsNav : IInputActionCollection, IDisposable
                 @Attack.started -= m_Wrapper.m_NaveActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_NaveActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_NaveActionsCallbackInterface.OnAttack;
-                @Pause.started -= m_Wrapper.m_NaveActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_NaveActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_NaveActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_NaveActionsCallbackInterface = instance;
             if (instance != null)
@@ -218,9 +193,6 @@ public class @ControlsNav : IInputActionCollection, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -229,6 +201,5 @@ public class @ControlsNav : IInputActionCollection, IDisposable
     {
         void OnMovimiento(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
     }
 }

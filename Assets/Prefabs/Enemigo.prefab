@@ -9,7 +9,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939302695887546874}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: fb76a3ddbee49f94f9b969d24c8c0978, type: 3}
   m_Controller: {fileID: 9100000, guid: 3a1941b2790918e40a9d11be1481278f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
   chasingRange: 100
   shootingRange: 5
   playerTransform: {fileID: 2420436976975764663, guid: fc5890e8549bd884ea9dd4a43e2209e3, type: 3}
+  Fusil: {fileID: 0}
 --- !u!54 &1639472247687499783
 Rigidbody:
   m_ObjectHideFlags: 0

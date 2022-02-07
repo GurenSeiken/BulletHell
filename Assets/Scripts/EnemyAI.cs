@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] public Transform playerTransform;
 
+    public GameObject Fusil;
+
     private Material material;
     private Node topNode;
     private NavMeshAgent agent;
@@ -52,12 +54,8 @@ public class EnemyAI : MonoBehaviour
         if(topNode.nodeState == NodeState.FAILURE){
             SetColor(Color.red);
         }
-        if (playerTransform.position.z >= transform.position.z)
-        {
-            Debug.Log("Hey");
-            Destroy(gameObject);
-        }
         currentHealth += Time.deltaTime * healthRestoreRate;
+
     }
 
     private void OnMouseDown() {
@@ -66,5 +64,20 @@ public class EnemyAI : MonoBehaviour
 
     public void SetColor(Color color){
         material.color = color;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.transform.tag == "Bala")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.transform.tag == "Mina")
+        {
+            Destroy(gameObject);
+        }
     }
 }
