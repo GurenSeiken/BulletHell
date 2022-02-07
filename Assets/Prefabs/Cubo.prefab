@@ -165,7 +165,7 @@ MonoBehaviour:
   chasingRange: 100
   shootingRange: 5
   playerTransform: {fileID: 2420436976975764663, guid: fc5890e8549bd884ea9dd4a43e2209e3, type: 3}
-  Fusil: {fileID: 1716734138}
+  Fusil: {fileID: 0}
 --- !u!195 &2325528527406223573
 NavMeshAgent:
   m_ObjectHideFlags: 0

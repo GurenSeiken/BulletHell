@@ -14,56 +14,78 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] public Transform playerTransform;
 
+    public GameObject Fusil;
+
     private Material material;
     private Node topNode;
     private NavMeshAgent agent;
 
     private float _currentHealth;
-    public float currentHealth{
-        get{return _currentHealth;}
-        set{_currentHealth = Mathf.Clamp(value, 0, startingHealth);}
+    public float currentHealth
+    {
+        get { return _currentHealth; }
+        set { _currentHealth = Mathf.Clamp(value, 0, startingHealth); }
     }
 
-    private void Awake() {
+    private void Awake()
+    {
         agent = GetComponent<NavMeshAgent>();
         material = GetComponent<MeshRenderer>().material;
     }
 
-    private void Start() {
+    private void Start()
+    {
         _currentHealth = startingHealth;
         ConstructBehaviourTree();
     }
 
-    private void ConstructBehaviourTree(){
+    private void ConstructBehaviourTree()
+    {
         HealthNode healthNode = new HealthNode(this, lowHealthThreshold);
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent, this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
         RangeNode shootingRangeNode = new RangeNode(shootingRange, playerTransform, transform);
         ShootNode shootNode = new ShootNode(agent, this);
 
-        Sequence chaseSequence = new Sequence(new List<Node> {chasingRangeNode, chaseNode});
-        Sequence shootSequence = new Sequence(new List<Node> {shootingRangeNode, shootNode});
+        Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
+        Sequence shootSequence = new Sequence(new List<Node> { shootingRangeNode, shootNode });
 
-        topNode = new Selector(new List<Node> {shootSequence, chaseSequence});
+        topNode = new Selector(new List<Node> { shootSequence, chaseSequence });
     }
 
-    private void Update() {
+    private void Update()
+    {
         topNode.Evaluate();
-        if(topNode.nodeState == NodeState.FAILURE){
+        if (topNode.nodeState == NodeState.FAILURE)
+        {
             SetColor(Color.red);
         }
-        if (playerTransform.position.z >= transform.position.z)
-        {
-            Destroy(gameObject);
-        }
         currentHealth += Time.deltaTime * healthRestoreRate;
+
     }
 
-    private void OnMouseDown() {
+    private void OnMouseDown()
+    {
         currentHealth -= 10f;
     }
 
-    public void SetColor(Color color){
+    public void SetColor(Color color)
+    {
         material.color = color;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.transform.tag == "Bala")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.transform.tag == "Mina")
+        {
+            Destroy(gameObject);
+        }
     }
 }
