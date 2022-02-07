@@ -202,8 +202,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bala: {fileID: 7047794989787595872, guid: 307d7f09c8d32ed4087efb178801f219, type: 3}
   boca: {fileID: 1716734139}
-  velocidad: 1500
-  shotrate: 0.01
+  velocidad: 1200
+  shotrate: 0.1
   tiempo: 0
 --- !u!95 &1818842689672157357
 Animator:

@@ -14,6 +14,8 @@ public class MovementShip : MonoBehaviour
     public float speed;
     public AudioSource Blaster;
 
+
+
     public bool powerup1 = false;
     public bool powerup2 = false;
     public bool powerup3 = false;
@@ -133,4 +135,9 @@ public class MovementShip : MonoBehaviour
             powerup3 = true;
         }
     }
+    public bool GetPowerUp1() {
+        return powerup1;
+    }
+
+
 }

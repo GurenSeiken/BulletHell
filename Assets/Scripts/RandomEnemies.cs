@@ -12,6 +12,7 @@ public class RandomEnemies : MonoBehaviour
     public GameObject Powerup2;
     public GameObject Powerup3;
     public GameObject Enemie;
+    public bool CanSpawn = true;
     float time, TimeDelay, timepowers;
 
     int pos;
@@ -26,19 +27,24 @@ public class RandomEnemies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time = time + 1f * Time.deltaTime;
-        timepowers = time + 1f * Time.deltaTime;
-        if (time >= TimeDelay) {
-            time = 0f;
-            SpawnOfEnemies(Seleccion());
-            SpawnofPowers(powers(),pos);
-        }
-        if (timepowers >= TimeDelay+5f)
+        if (CanSpawn == true)
         {
-            timepowers = 0f;
-            time = 0f;
-            SpawnofPowers(powers(), pos);
+            time = time + 1f * Time.deltaTime;
+            timepowers = time + 1f * Time.deltaTime;
+            if (time >= TimeDelay)
+            {
+                time = 0f;
+                SpawnOfEnemies(Seleccion());
+                SpawnofPowers(powers(), pos);
+            }
+            if (timepowers >= TimeDelay + 5f)
+            {
+                timepowers = 0f;
+                time = 0f;
+                SpawnofPowers(powers(), pos);
+            }
         }
+
     }
 
     public int Seleccion() {
