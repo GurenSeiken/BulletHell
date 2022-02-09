@@ -1923,6 +1923,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 390291790}
     - target: {fileID: 782908976, guid: 5f612a0ac3d2b274086ac5c29732aaf9, type: 3}
+      propertyPath: WinWIn
+      value: 
+      objectReference: {fileID: 1642838767}
+    - target: {fileID: 782908976, guid: 5f612a0ac3d2b274086ac5c29732aaf9, type: 3}
       propertyPath: powerup1
       value: 0
       objectReference: {fileID: 0}
