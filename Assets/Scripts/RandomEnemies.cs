@@ -27,14 +27,13 @@ public class RandomEnemies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CanSpawn == true)
-        {
             time = time + 1f * Time.deltaTime;
             timepowers = time + 1f * Time.deltaTime;
             if (time >= TimeDelay)
             {
                 time = 0f;
-                SpawnOfEnemies(Seleccion());
+                if (CanSpawn == true) { SpawnOfEnemies(Seleccion()); }
+                
                 SpawnofPowers(powers(), pos);
             }
             if (timepowers >= TimeDelay + 5f)
@@ -43,7 +42,6 @@ public class RandomEnemies : MonoBehaviour
                 time = 0f;
                 SpawnofPowers(powers(), pos);
             }
-        }
 
     }
 
