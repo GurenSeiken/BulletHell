@@ -5,6 +5,28 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
+
+    [SerializeField] private GameObject BalaPrefab;
+    [SerializeField] private static int ArraySize = 220;
+    [SerializeField] private GameObject[] Array = new GameObject[ArraySize];
+    [SerializeField] private GameObject Escudo;
+    public GameObject WinWIn;
+
+    float time, TimeDelay;
+
+    public GameObject Disparar()
+    {
+        for (int i = 0; i < ArraySize; i++)
+        {
+            if (!Array[i].activeSelf)       //Verificamos que el elemento no este activo
+            {
+                Array[i].SetActive(true);
+                return Array[i];
+            }
+        }
+        return null;
+    }
+
     public GameObject Bocabala;
     public GameObject self;
     public GameObject Pos1, Pos2;
@@ -13,17 +35,9 @@ public class Boss : MonoBehaviour
     bool powerup3 = false;
     public Text Vida;
     float life = 100;
+    public int N;
+
     // Start is called before the first frame update
-
-    void Start()
-    {
-        Comportamiento();
-    }
-
-
-    private void Comportamiento()
-    {
-    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -62,6 +76,18 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (life < 0) {
+            WinWIn.SetActive(true);
+        }
+    }
+
+    public void SetEscudoOn()
+    {
+        Escudo.SetActive(true);
+    }
+
+    public void SetEscudoOff()
+    {
+        Escudo.SetActive(false);
     }
 }

@@ -169,4 +169,12 @@ public class RandomEnemies : MonoBehaviour
     }
 
 
+    public void OnEnemigos() {
+        CanSpawn = true;
+    }
+
+    public void OffEnemigos() {
+        CanSpawn = false;
+    }
+
 }

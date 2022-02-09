@@ -7,9 +7,13 @@ public class DisparoEnemigo : MonoBehaviour
     [SerializeField] public GameObject Bala;
     [SerializeField] private Transform boca;
 
-    [SerializeField] private float velocidad = 5f;
+    [SerializeField] private float velocidad ;
     [SerializeField] private float shotrate = 0.5f;
     [SerializeField] private float tiempo;
+
+
+
+
     
 
     void Update()
